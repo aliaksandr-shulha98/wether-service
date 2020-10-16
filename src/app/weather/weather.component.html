@@ -1,0 +1,7 @@
+<div *ngIf="location && weather">
+  <p>{{location.city}} : {{weather.description}}</p>
+  <p>Temperature: {{weather.temp}} (feels like {{weather.feelsLike}})</p>
+  <p>Pressure: {{weather.pressure}}</p>
+  <p>Humidity: {{weather.humidity}}</p>
+  <p>Wind speed: {{weather.windSpeed}} m/s</p>
+</div>
