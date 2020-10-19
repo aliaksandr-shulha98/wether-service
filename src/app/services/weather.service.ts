@@ -13,7 +13,7 @@ export class WeatherService {
     this.url = `http://api.openweathermap.org/data/2.5/weather?appid=${environment.weatherApiKey}`;
   }
 
-  getWeather(lat: string, lon: string): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}&lat=${lat}&lon=${lon}`);
+  getWeather(city: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}&q=${city}`);
   }
 }

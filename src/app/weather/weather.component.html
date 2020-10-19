@@ -1,3 +1,4 @@
+<app-search (whenChange)="changeLocation($event)"></app-search>
 <div *ngIf="location && weather">
   <p>{{location.city}} : {{weather.description}}</p>
   <p>Temperature: {{weather.temp}} (feels like {{weather.feelsLike}})</p>
