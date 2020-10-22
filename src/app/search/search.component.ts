@@ -7,17 +7,19 @@ import places from 'places.js';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements AfterViewInit, OnDestroy {
-  private instance = null;
+  public instance = null;
 
   @ViewChild('input') input;
 
-  @Output() whenChange ? = new EventEmitter();
+  @Output()
+  public whenChange ? = new EventEmitter();
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this.instance = places({
       container: this.input.nativeElement
     });
     this.instance.on('change', e => {
+      console.log(e);
       this.whenChange.emit(e);
     });
   }

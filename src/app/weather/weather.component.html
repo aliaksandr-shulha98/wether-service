@@ -1,8 +1,48 @@
-<app-search (whenChange)="changeLocation($event)"></app-search>
-<div *ngIf="location && weather">
-  <p>{{location.city}} : {{weather.description}}</p>
-  <p>Temperature: {{weather.temp}} (feels like {{weather.feelsLike}})</p>
-  <p>Pressure: {{weather.pressure}}</p>
-  <p>Humidity: {{weather.humidity}}</p>
-  <p>Wind speed: {{weather.windSpeed}} m/s</p>
+<div class="main-wrapper">
+  <div class="container">
+    <div class="weather-side">
+      <div class="weather-info--wrapper">
+        <div *ngIf="location && weather" class="date-container">
+          <h2 class="date-dayname">{{weather.date | date:'EEEE'}}</h2>
+          <span class="date-day">{{weather.date | date}}</span>
+          <span class="location">{{location.city}}</span>
+        </div>
+        <div *ngIf="location && weather" class="weather-container">
+          <div class="t">
+            <img src='http://openweathermap.org/img/wn/{{weather.icon}}@2x.png' alt="{{weather.icon}}"/>
+          </div>
+          <div class="t">
+            <h1 class="weather-temp">{{weather.temp}}°C</h1>
+            <h3 class="weather-desc">{{weather.description}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-side">
+      <div *ngIf="location && weather" class="today-info-container">
+        <div class="today-info">
+          <div class="humidity"> <span class="title">Humidity </span><span class="value">{{weather.humidity}} %</span>
+            <div class="clear"></div>
+          </div>
+          <div class="wind"> <span class="title">Wind </span><span class="value">{{weather.windSpeed}} m/s</span>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="location-container">
+        <div class="source-radio_container">
+          <label>
+            OpenWeatherMap
+            <input type="radio" name="source" value="openWeather" checked>
+          </label>
+          <label>
+            Weatherbit
+            <input type="radio" name="source" value="weatherbit">
+          </label>
+        </div>
+        <app-search (whenChange)="changeLocation($event)"></app-search>
+      </div>
+    </div>
+
+  </div>
 </div>

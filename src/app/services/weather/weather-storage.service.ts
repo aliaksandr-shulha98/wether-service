@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
-import {Weather} from '../entities/weather';
-import {Location} from '../entities/location';
+import {Weather} from '../../interfaces/weather';
+import {Location} from '../../interfaces/location';
 import {LOCAL_STORAGE, StorageService} from 'ngx-webstorage-service';
 import * as moment from 'moment';
 @Injectable({
@@ -12,7 +12,6 @@ export class WeatherStorageService {
 
   getStored(location: Location): Weather {
     let weather: Weather;
-    console.log(moment('2020-08-04 18:00:00').format('yyyy-MM-DD'));
     if (this.storage.has(location.city)){
       weather = this.storage.get(location.city);
       const current: moment.Moment = moment(new Date());
