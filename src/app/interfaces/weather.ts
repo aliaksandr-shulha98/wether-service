@@ -1,6 +1,5 @@
-export class Weather{
+export interface Weather{
   temp: number;
-  feelsLike: number;
   humidity: bigint;
   windSpeed: number;
   description: string;

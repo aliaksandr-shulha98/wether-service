@@ -5,4 +5,5 @@ import {Observable} from 'rxjs';
 export interface WeatherSource {
   getWeatherResponse(location: Location): Observable<any>;
   extractWeather(response: any): Weather;
+  getSourceName(): string;
 }

@@ -24,7 +24,7 @@ export class SearchComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.instance.removeAllListeners('change');
     this.instance.destroy();
   }

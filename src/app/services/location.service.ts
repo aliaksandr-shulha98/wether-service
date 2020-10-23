@@ -7,13 +7,13 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class LocationService {
-  url: string;
+  private readonly url: string;
 
-  constructor(private httpClient: HttpClient) {
+  public constructor(private httpClient: HttpClient) {
     this.url = `https://ipinfo.io?token=${environment.locationApiKey}`;
   }
 
-  getCurrentLocation(): Observable<any> {
+  public getCurrentLocation(): Observable<any> {
     return this.httpClient.get<any>(`${this.url}`);
   }
 }

@@ -12,24 +12,28 @@ import {Observable} from 'rxjs';
 export class OpenWeatherSourceService implements WeatherSource {
   private readonly url: string;
 
-  constructor(private httpClient: HttpClient) {
-    this.url = `http://api.openweathermap.org/data/2.5/weather?appid=${environment.weatherApiKey}&units=metric`;
+  public constructor(private httpClient: HttpClient) {
+    this.url = `http://api.openweathermap.org/data/2.5/weather?appid=${environment.openWeatherApiKey}&units=metric`;
   }
 
-  getWeatherResponse(location: Location): Observable<any> {
+  public getWeatherResponse(location: Location): Observable<any> {
     return this.httpClient
       .get<any>(`${this.url}&lat=${location.lat}&lon=${location.lon}`);
   }
 
-  extractWeather(response: any): Weather {
-    const weather: Weather = new Weather();
-    weather.date = Date.now();
-    weather.description = response.weather[0].description;
-    weather.temp = response.main.temp;
-    weather.humidity = response.main.humidity;
-    weather.windSpeed = response.wind.speed;
-    weather.icon = response.weather[0].icon;
-    return weather;
+  public extractWeather(response: any): Weather {
+    return {
+      date: Date.now(),
+      description: response.weather[0].description,
+      temp: response.main.temp,
+      humidity: response.main.humidity,
+      windSpeed: response.wind.speed,
+      icon: `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
+    };
+  }
+
+  public getSourceName(): string {
+    return 'OpenWeatherMap';
   }
 
 }

@@ -9,6 +9,7 @@
 .main-wrapper {
   display: flex;
   justify-content: center;
+  padding-top: 2rem
 }
 
 .weather-info--wrapper {
@@ -108,7 +109,6 @@
 .today-info {
   padding: 15px;
   margin: 0 25px 25px 25px;
-  /* 	box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25); */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -215,8 +215,18 @@
 
 @media screen and (max-width: 648px) {
   .container {
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
   }
 }
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-button {
+  padding: 5px;
+}
+
